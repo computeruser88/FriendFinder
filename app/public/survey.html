@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,12 +24,20 @@
             <p class="lead">Answer the following questions to find your most compatible friend.</p>
         </div>
     </div>
-    <form class="form-inline">
+    <form action="http://localhost:3000/api/friends" method="POST">
         <div class="container">
+            <div class="form-group">
+                <label for="userName">Name</label>
+                <input type="text" class="form-control" id="userName" aria-describedby="userNameHelp" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="photoUrl">Photo URL</label>
+                <input type="text" class="form-control" id="photoUrl" placeholder="Enter your photo URL">
+            </div>
             <div class="row">
-                <div class="col">
-                    <label class="mr-sm-2" for="inlineFormCustomSelect1">I have a wonderful sense of humor.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect1">
+                <div class="col md-6">
+                    <label class="mr-sm-2" for="question1">I have a wonderful sense of humor.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question1">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -37,8 +45,8 @@
                         <option value="5">Strongly Agree</option>
                     </select>
                     <hr>
-                    <label class="mr-sm-2" for="inlineFormCustomSelect2">I am always the life of the party.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect2">
+                    <label class="mr-sm-2" for="question2">I am always the life of the party.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question2">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -46,8 +54,8 @@
                         <option value="5">Strongly Agree</option>
                     </select>
                     <hr>
-                    <label class="mr-sm-2" for="inlineFormCustomSelect3">I would date a geek.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect3">
+                    <label class="mr-sm-2" for="question3">I would date a geek.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question3">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -55,8 +63,8 @@
                         <option value="5">Strongly Agree</option>
                     </select>
                     <hr>
-                    <label class="mr-sm-2" for="inlineFormCustomSelect4">I am a morning person.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect4">
+                    <label class="mr-sm-2" for="question4">I am a morning person.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question4">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -64,8 +72,8 @@
                         <option value="5">Strongly Agree</option>
                     </select>
                     <hr>
-                    <label class="mr-sm-2" for="inlineFormCustomSelect5">I enjoy cooking.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect5">
+                    <label class="mr-sm-2" for="question5">I enjoy cooking.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question5">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -74,9 +82,9 @@
                     </select>
                     <hr>
                 </div>
-                <div class="col">
-                    <label class="mr-sm-2" for="inlineFormCustomSelect6">I am a jealous partner.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect6">
+                <div class="col md-6">
+                    <label class="mr-sm-2" for="question6">I am a jealous partner.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question6">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -84,8 +92,8 @@
                         <option value="5">Strongly Agree</option>
                     </select>
                     <hr>
-                    <label class="mr-sm-2" for="inlineFormCustomSelect7">I often display affection.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect7">
+                    <label class="mr-sm-2" for="question7">I often display affection.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question7">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -93,8 +101,8 @@
                         <option value="5">Strongly Agree</option>
                     </select>
                     <hr>
-                    <label class="mr-sm-2" for="inlineFormCustomSelect8">I take a shower every day.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect8">
+                    <label class="mr-sm-2" for="question8">I take a shower every day.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question8">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -102,8 +110,8 @@
                         <option value="5">Strongly Agree</option>
                     </select>
                     <hr>
-                    <label class="mr-sm-2" for="inlineFormCustomSelect9">I believe a partner should be well-mannered.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect9">
+                    <label class="mr-sm-2" for="question9">I believe a partner should be well-mannered.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question9">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -111,8 +119,8 @@
                         <option value="5">Strongly Agree</option>
                     </select>
                     <hr>
-                    <label class="mr-sm-2" for="inlineFormCustomSelect10">I am afraid of serious commitment.</label>
-                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect10">
+                    <label class="mr-sm-2" for="question10">I am afraid of serious commitment.</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="question10">
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3" selected>Neutral</option>
@@ -122,8 +130,71 @@
                     <hr>
                 </div>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
     </form>
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your closest match</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Neet your closest match:</h5>
+                    <h4 id="closestMatch"></h4>
+                    <img id="closestMatchPhotoUrl" alt="image" width=300px>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#submit-btn").on("click", function () {
+                var friendData = {
+                    name: $('#username').val().trim(),
+                    photoUrl: $('#photoUrl').val().trim(),
+                    scores: [
+                        $('#question1').val(),
+                        $('#question2').val(),
+                        $('#question3').val(),
+                        $('#question4').val(),
+                        $('#question5').val(),
+                        $('#question6').val(),
+                        $('#question7').val(),
+                        $('#question8').val(),
+                        $('#question9').val(),
+                        $('#question10').val(),
+                    ]
+                };
+                if (user !== "") {
+                    userRouteName = user.replace(/\s+/g, "").toLowerCase();
+                    var currentUrl = window.location.origin;
+                    $.post(currentUrl + "/api/friends/", friendData, function (data) {
+                        $("#closestMatch").text(data.name);    
+                        $("#closestMatchPhotoUrl").attr("src", data.photoUrl);
+                        $(".modal").modal("show");
+                    });
+                }
+                // reset all answers to neutral
+                $('#question1').val('3');
+                $('#question2').val('3');
+                $('#question3').val('3');
+                $('#question4').val('3');
+                $('#question5').val('3');
+                $('#question6').val('3');
+                $('#question7').val('3');
+                $('#question8').val('3');
+                $('#question9').val('3');
+                $('#question10').val('3');
+            });
+        });
+    </script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
