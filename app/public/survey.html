@@ -179,7 +179,7 @@
                     console.log(data);
                     $("#closestMatch").text(data.name);
                     $("#closestMatchPhotoUrl").attr("src", data.photoUrl);
-                    $("#modal1").modal();
+                    $("#modal1").modal("show");
                     // reset all answers to neutral
                     $('#question1').val('3');
                     $('#question2').val('3');
