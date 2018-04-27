@@ -24,7 +24,7 @@
             <p class="lead">Answer the following questions to find your most compatible friend.</p>
         </div>
     </div>
-    <form action="http://localhost:3000/api/friends" method="POST">
+    <form>
         <div class="container">
             <div class="form-group">
                 <label for="userName">Name</label>
@@ -132,11 +132,11 @@
             </div>
             <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
     </form>
-    <div class="modal" tabindex="-1" role="dialog">
+    <div class="modal" id="modal1" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Your closest match</h5>
+                    <h5 class="modal-title">Your closest match:</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -154,43 +154,44 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#submit-btn").on("click", function () {
-                var friendData = {
+            $("#submit-btn").on("click", function (event) {
+                event.preventDefault();
+                var userData = {
                     name: $('#username').val().trim(),
                     photoUrl: $('#photoUrl').val().trim(),
                     scores: [
-                        $('#question1').val(),
-                        $('#question2').val(),
-                        $('#question3').val(),
-                        $('#question4').val(),
-                        $('#question5').val(),
-                        $('#question6').val(),
-                        $('#question7').val(),
-                        $('#question8').val(),
-                        $('#question9').val(),
-                        $('#question10').val(),
+                        $('#question1').val().trim(),
+                        $('#question2').val().trim(),
+                        $('#question3').val().trim(),
+                        $('#question4').val().trim(),
+                        $('#question5').val().trim(),
+                        $('#question6').val().trim(),
+                        $('#question7').val().trim(),
+                        $('#question8').val().trim(),
+                        $('#question9').val().trim(),
+                        $('#question10').val().trim()
                     ]
                 };
-                if (user !== "") {
-                    userRouteName = user.replace(/\s+/g, "").toLowerCase();
-                    var currentUrl = window.location.origin;
-                    $.post(currentUrl + "/api/friends/", friendData, function (data) {
-                        $("#closestMatch").text(data.name);    
-                        $("#closestMatchPhotoUrl").attr("src", data.photoUrl);
-                        $(".modal").modal("show");
-                    });
-                }
-                // reset all answers to neutral
-                $('#question1').val('3');
-                $('#question2').val('3');
-                $('#question3').val('3');
-                $('#question4').val('3');
-                $('#question5').val('3');
-                $('#question6').val('3');
-                $('#question7').val('3');
-                $('#question8').val('3');
-                $('#question9').val('3');
-                $('#question10').val('3');
+
+                console.log("User data: " + userData);
+                $.post("/api/friends", userData).done(function (data) {
+                    console.log(data);
+                    $("#closestMatch").text(data.name);
+                    $("#closestMatchPhotoUrl").attr("src", data.photoUrl);
+                    $("#modal1").modal("open");
+                    // reset all answers to neutral
+                    $('#question1').val('3');
+                    $('#question2').val('3');
+                    $('#question3').val('3');
+                    $('#question4').val('3');
+                    $('#question5').val('3');
+                    $('#question6').val('3');
+                    $('#question7').val('3');
+                    $('#question8').val('3');
+                    $('#question9').val('3');
+                    $('#question10').val('3');
+                });
+
             });
         });
     </script>

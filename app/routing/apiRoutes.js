@@ -1,29 +1,31 @@
+var path = require("path");
 var friends = require("../data/friends.js");
 
 module.exports = function (app) {
     app.get("/api/friends", function (req, res) {
-        return res.json(friends);
+        res.json(friends);
     });
 
     app.post("/api/friends", function (req, res) {
+        var userInput = req.body;
+        console.log("User input: " + userInput);
         var userScores = req.body.scores;
-        var incompatibilityPoints = [];
-        
-        for (var i = 0; i < friends.length; i++) {
-            incompatibilityPoints[i] = 0;
+        console.log(userScores);
+        var mostCompatibleName = '';
+        var mostCompatiblePic = '';
+        var leastDifference = 1000;
+        var userDifference = 0;
+        for (var i = 0;  i < friends.length; i++) {
             for (var j = 0; j < userScores.length; j++){
-                incompatibilityPoints[i] += Math.abs(parseInt(friends[i].scores[j]) - parseInt(userScores[j]));
+                userDifference += Math.abs(friends[i].scores[j] - userScores[j]);
+            }
+            if (userDifference < leastDifference) {
+                leastDifference = userDifference;
+                mostCompatibleName = friends[i].name;
+                mostCompatiblePic = friends[i].photoUrl;
             }
         }
-        var mostCompatibleFriend = friends[0];
-        var leastPoints = incompatibilityPoints[0];
-        for (var i = 1;  i < friends.length; i++) {
-            if (incompatibilityPoints[i] < leastIncompatibilityPoints) {
-                leastIncompatibilityPoints = incompatibilityPoints[i];
-                mostCompatibleFriend = friends[i];
-            }
-        }
-        res.json(mostCompatibleFriend);
-        friends.push(req.body);
+        res.json({status: 'OK', name: mostCompatibleName, photoUrl: mostCompatiblePic});
+        friends.push(userInput);
     });
 }  
