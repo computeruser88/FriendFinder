@@ -174,13 +174,15 @@
                     ]
                 };
                 console.log("Scores: " + userData.scores);
-                console.log("User data: " + userData);
-                $.post("/api/friends", userData).done(function (data) {
-                    console.log(data);
+                console.log("User data: " + JSON.stringify(userData));
+                $.post("/api/friends", userData, function (data) {
+                    console.log(JSON.stringify(data));
                     $("#closestMatch").text(data.name);
                     $("#closestMatchPhotoUrl").attr("src", data.photoUrl);
                     $("#modal1").modal("show");
                     // reset all answers to neutral
+                    $("#userName").text("");
+                    $("#photoUrl").text("");
                     $('#question1').val('3');
                     $('#question2').val('3');
                     $('#question3').val('3');

@@ -11,21 +11,26 @@ module.exports = function (app) {
         console.log("User input: " + userInput);
         var userScores = req.body.scores;
         console.log(userScores);
-        var mostCompatibleName = '';
-        var mostCompatiblePic = '';
         var leastDifference = 9999;
-        var userDifference = 0;
+        var mostCompatibleIndex;
+        var match = {};
+        var userDifference = [0, 0, 0, 0, 0];
+        console.log(friends.length);
         for (var i = 0;  i < friends.length; i++) {
             for (var j = 0; j < userScores.length; j++){
-                userDifference += Math.abs(friends[i].scores[j] - userScores[j]);
+                userScores[j] = parseInt(userScores[j]);
+                userDifference[i] += Math.abs(parseInt(friends[i].scores[j]) - userScores[j]);
             }
-            if (userDifference < leastDifference) {
-                leastDifference = userDifference;
-                mostCompatibleName = friends[i].name;
-                mostCompatiblePic = friends[i].photoUrl;
+            if (userDifference[i] < leastDifference) {
+                leastDifference = userDifference[i];
+                mostCompatibleIndex = i;
+                match = friends[i];
+                console.log(JSON.stringify(friends[i]));
+
             }
+            console.log("Match : " + JSON.stringify(match));
         }
-        res.json({status: 'OK', name: mostCompatibleName, photoUrl: mostCompatiblePic});
+        res.json({status: 'OK', name: match.name, photoUrl: match.photoUrl});
         friends.push(userInput);
     });
 }  
