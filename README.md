@@ -1,6 +1,6 @@
 # FriendFinder
 
-A dating compatibility app using Node.js and Express.js. Answer all ten questions and your most compatible friend will appear!
+A dating compatibility app using Node.js and Express.js. Answer all questions and your most compatible friend will appear!
 
 All photos are creative commons images that are free to use and share commercially.
 
