@@ -13,7 +13,7 @@ module.exports = function (app) {
         console.log(userScores);
         var mostCompatibleName = '';
         var mostCompatiblePic = '';
-        var leastDifference = 1000;
+        var leastDifference = 9999;
         var userDifference = 0;
         for (var i = 0;  i < friends.length; i++) {
             for (var j = 0; j < userScores.length; j++){
